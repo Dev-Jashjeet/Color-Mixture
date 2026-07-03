@@ -1,23 +1,42 @@
-import React from "react"
-import './App.css'
-import { BrowserRouter, Routes, Route, NavLink, Navigate } from "react-router";
+import { createContext, useState } from "react";
+import "./App.css";
 
 function App() {
-  return(
+  const [gradient, setGradient] = useState<string>("Linear");
+  const [num, setNum] = useState<number>(12);
+  return (
     <>
-    <NavLink className="NavLink text-blue-400" to="/">Home</NavLink>
-    <NavLink className="NavLink" to="/about">About</NavLink>
-    <NavLink className="NavLink" to="/contact">Contact</NavLink>
-      <Routes>
-        <Route path="/" element={<h1>Home</h1>}/>
-        <Route path="/about" element={<h1>About</h1>}/>
-        <Route path="/contact/agam?" element={<h1>Contact</h1>}/>
-        {/* <Route path="/*" element={<h2>Page Not Found <hr /> 4O4 Error</h2>}/> */}
-        <Route path="/*" element={<Navigate to="/"/>}/>
-        <h5></h5>
-      </Routes>
+      <div className="min-h-screen flex justify-center bg-gray-400">
+        <div className="bg-color h-17 w-300 rounded-xl mt-5 flex items-center justify-between p-5">
+          <div className="flex items-center">
+            <span className="text-4xl mr-1 font-black">🎨</span>
+            <span className="text-3xl">Gradient Generator - {num} {gradient}</span>
+          </div>
+          <div className="flex gap-2">
+            <input
+              type="text"
+              className="h-2 w-25 p-4 rounded-xs bg-white"
+              placeholder="12"
+              onChange={(event): void => setNum(Number(event.target.value))}
+            />
+
+            <select
+              className="h-8 w-25 rounded-xs bg-white cursor-pointer"
+              defaultValue={"Linear"}
+              onChange={(event): void => setGradient(event.target.value)}
+            >
+              <option value="Linear">Linear</option>
+              <option value="Gradient">Gradient</option>
+            </select>
+
+            <div className="bg-red-400 h-auto w-50 rounded-xs flex items-center justify-center cursor-pointer">
+              Generate
+            </div>
+          </div>
+        </div>
+      </div>
     </>
-  )
+  );
 }
 
 export default App;
