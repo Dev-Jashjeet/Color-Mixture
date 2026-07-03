@@ -13,10 +13,10 @@ A modern **Gradient Generator** built with **React** and **TypeScript** that let
 
 ## 🛠️ Tech Stack
 
+- HTML
 - React
 - TypeScript
-- HTML
-- CSS
+- TailwindCSS
 - React Toastify
 
 ## 🚀 Getting Started
